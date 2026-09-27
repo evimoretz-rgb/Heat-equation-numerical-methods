@@ -158,3 +158,17 @@ The performance of the two numerical methods is evaluated using:
 - **Computation time** to evaluate computational efficiency.
 
 For the spectral method, the numerical resolution is controlled by $N_x$ and $N_{\tau}$. For the Crank–Nicolson method, the spatial and temporal resolutions are controlled by $h$ and $k$, respectively.
+
+### Benchmark Results
+
+The following table compares the maximum error and computation time of the Chebyshev Spectral Method and the Crank–Nicolson Method.
+
+| N | Spectral Max. Error | Spectral Time (s) | Crank–Nicolson Max. Error | Crank–Nicolson Time (s) |
+|---:|---:|---:|---:|---:|
+| 5  | 3.533 × 10⁻²  | 0.496 | 6.257 × 10⁻² | 0.850 |
+| 10 | 6.328 × 10⁻⁵  | 0.737 | 1.809 × 10⁻² | 0.522 |
+| 15 | 1.133 × 10⁻⁸  | 0.854 | 7.729 × 10⁻³ | 0.540 |
+| 20 | 4.161 × 10⁻¹³ | 1.065 | 4.513 × 10⁻³ | 0.836 |
+| 25 | 4.829 × 10⁻¹⁵ | 2.494 | 2.820 × 10⁻³ | 0.850 |
+
+For the spectral method, the resolution parameters satisfy $N_x=N_{\tau}=N$. For the Crank–Nicolson method, the discretization parameters are $h=2/N$ and $k=1/N$.
