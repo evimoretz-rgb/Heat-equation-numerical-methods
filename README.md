@@ -48,7 +48,7 @@ Two numerical methods are implemented and compared in this project:
 
 The numerical solutions are compared with the exact solution in terms of accuracy, convergence behavior, and computational performance.
 
-### Chebyshev Spectral Method
+### 1. Chebyshev Spectral Method
 
 The spectral method approximates the solution using Chebyshev polynomials. The spatial approximation can be written as
 
@@ -84,3 +84,54 @@ u''(x_i) \approx \sum_{j=0}^{N}(D_{xx})_{i,j}u(x_j),
 ```
 
 where \(D_x\) and \(D_{xx}\) denote the first- and second-order Chebyshev differentiation matrices, respectively.
+
+#### Domain Transformation
+
+Since the spatial domain is already defined on \((-1,1)\), while the time domain is not, a linear transformation is introduced to map the time interval onto the spectral domain:
+
+```math
+\tau(t)=at+b.
+```
+
+For a time interval \(t_s \leq t \leq t_e\), the transformation satisfies
+
+```math
+\tau(t_s)=-1,
+\qquad
+\tau(t_e)=1.
+```
+
+Therefore,
+
+```math
+at_s+b=-1,
+\qquad
+at_e+b=1.
+```
+
+This transformation allows the Chebyshev spectral approximation to be applied in both the spatial and transformed time domains.
+
+
+### 2. Crank–Nicolson Method
+
+The Crank–Nicolson method discretizes both the spatial and temporal domains. Let \(h\) denote the spatial step size and \(k\) the time step size. The grid points are defined by
+
+```math
+x_i = ih, \qquad t_j = jk.
+```
+
+The Crank–Nicolson discretization of the one-dimensional heat equation is obtained by averaging the spatial second derivative at two consecutive time levels:
+
+```math
+\frac{u_i^{j+1}-u_i^j}{k}
+-
+\frac{1}{2}
+\left[
+\frac{u_{i+1}^{j}-2u_i^j+u_{i-1}^{j}}{h^2}
++
+\frac{u_{i+1}^{j+1}-2u_i^{j+1}+u_{i-1}^{j+1}}{h^2}
+\right]
+=0.
+```
+
+At each time step, this formulation leads to a tridiagonal system of linear equations that is solved to obtain the numerical solution at the next time level.
