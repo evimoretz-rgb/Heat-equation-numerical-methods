@@ -69,4 +69,18 @@ The Chebyshev–Gauss–Lobatto collocation points are
 x_j=\cos\left(\frac{j\pi}{N}\right),
 \qquad j=0,1,\ldots,N.
 ```
+#### Spectral Differentiation
 
+The spatial derivatives are approximated using Chebyshev differentiation matrices. At the collocation points, the first and second derivatives can be written as
+
+```math
+u'(x_i) \approx \sum_{j=0}^{N}(D_x)_{i,j}u(x_j),
+```
+
+and
+
+```math
+u''(x_i) \approx \sum_{j=0}^{N}(D_{xx})_{i,j}u(x_j),
+```
+
+where \(D_x\) and \(D_{xx}\) denote the first- and second-order Chebyshev differentiation matrices, respectively.
