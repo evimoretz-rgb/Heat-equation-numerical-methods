@@ -83,17 +83,17 @@ and
 u''(x_i) \approx \sum_{j=0}^{N}(D_{xx})_{i,j}u(x_j),
 ```
 
-where \(D_x\) and \(D_{xx}\) denote the first- and second-order Chebyshev differentiation matrices, respectively.
+where $(D_x)$ and $(D_{xx})$ denote the first- and second-order Chebyshev differentiation matrices, respectively.
 
 #### Domain Transformation
 
-Since the spatial domain is already defined on \((-1,1)\), while the time domain is not, a linear transformation is introduced to map the time interval onto the spectral domain:
+Since the spatial domain is already defined on $(-1,1)$, while the time domain is not, a linear transformation is introduced to map the time interval onto the spectral domain:
 
 ```math
 \tau(t)=at+b.
 ```
 
-For a time interval \(t_s \leq t \leq t_e\), the transformation satisfies
+For a time interval $(t_s \leq t \leq t_e)$, the transformation satisfies
 
 ```math
 \tau(t_s)=-1,
@@ -114,7 +114,7 @@ This transformation allows the Chebyshev spectral approximation to be applied in
 
 ### 2. Crank–Nicolson Method
 
-The Crank–Nicolson method discretizes both the spatial and temporal domains. Let \(h\) denote the spatial step size and \(k\) the time step size. The grid points are defined by
+The Crank–Nicolson method discretizes both the spatial and temporal domains. Let $(h)$ denote the spatial step size and $(k)$ the time step size. The grid points are defined by
 
 ```math
 x_i = ih, \qquad t_j = jk.
@@ -135,3 +135,26 @@ The Crank–Nicolson discretization of the one-dimensional heat equation is obta
 ```
 
 At each time step, this formulation leads to a tridiagonal system of linear equations that is solved to obtain the numerical solution at the next time level.
+
+## Numerical Evaluation
+
+The numerical solutions are evaluated by comparing them with the exact solution. The maximum error is defined as
+
+```math
+E_{\max}
+=
+\max_{x,t}
+\left|
+U_{\mathrm{exact}}(x,t)
+-
+U_{\mathrm{numerical}}(x,t)
+\right|.
+```
+
+The performance of the two numerical methods is evaluated using:
+
+- **Maximum error** to measure numerical accuracy.
+- **Convergence behavior** as the numerical resolution is increased.
+- **Computation time** to evaluate computational efficiency.
+
+For the spectral method, the numerical resolution is controlled by $N_x$ and $N_{\tau}$. For the Crank–Nicolson method, the spatial and temporal resolutions are controlled by $h$ and $k$, respectively.
